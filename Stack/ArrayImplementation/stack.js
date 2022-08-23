@@ -11,6 +11,12 @@ class Stack{
         return false  
     }
 
+    isEmpty(){
+        if(this.t < 0)
+          return true
+        return false  
+    }
+
     push(data){
         //Check if array is Full
         if(this.isFull()){
@@ -19,6 +25,17 @@ class Stack{
         }
         this.t=this.t+1
         this.items.push(data)
+    }
+
+    pop(){
+       //check if array is Empty
+       if(this.isEmpty()){
+           console.log("Array Is Empty")
+           return
+       }
+       let val=this.items.pop()
+       console.log(`Element Removed is ${val}`)
+       this.t=this.t-1
     }
 
     printStack(){
@@ -36,4 +53,6 @@ let stack= new Stack()
 stack.push(10)
 stack.push(20)
 stack.push(30)
+stack.printStack()
+stack.pop()
 stack.printStack()
