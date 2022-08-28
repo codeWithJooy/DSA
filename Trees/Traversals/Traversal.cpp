@@ -1,4 +1,5 @@
 #include<iostream>
+#include<queue>
 using namespace std;
 
 class Tree{
@@ -45,6 +46,30 @@ class Tree{
        postOrder(root->right);  
        cout<<root->data<<" ";
    }
+
+   void levelOrder(Tree* root){
+     if(root==NULL)
+      return;
+     queue<Tree*> qu;
+
+     qu.push(root);
+     while(!qu.empty()){
+       Tree* node=qu.front();
+       qu.pop();
+
+       cout<<node->data<<" ";
+       
+       if(node->left!=NULL){
+         qu.push(node->left);
+       }
+       if(node->right!=NULL){
+         qu.push(node->right);
+       }
+
+     }
+
+
+   }
 };
 
 int main(){
@@ -68,6 +93,10 @@ int main(){
 
     cout<<"PostOrder Traversal Is\n";
     b->postOrder(root);
+    cout<<"\n";
+
+    cout<<"LevelOrder Traversal Is\n";
+    b->levelOrder(root);
     cout<<"\n";
 
 

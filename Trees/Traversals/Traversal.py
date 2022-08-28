@@ -15,6 +15,21 @@ class Tree:
         self.preorder(root.left)
         self.preorder(root.right)
 
+    def inorder(self,root):
+        if(root==None):
+           return        
+        self.inorder(root.left)
+        print("Data is ",root.data)
+        self.inorder(root.right)
+
+    
+    def postorder(self,root):
+        if(root==None):
+           return        
+        self.postorder(root.left)
+        self.postorder(root.right)
+        print("Data is ",root.data)        
+
     def levelOrder(self,root):
         if(root==None):
             return
@@ -34,7 +49,7 @@ class Tree:
                 que.append(node.left)
             if(node.right!=None):        
                 que.append(node.right)
-                
+
 root=Tree(10)  
 root.left=Tree(20)
 root.right=Tree(30)
@@ -43,5 +58,11 @@ root.left.right=Tree(50)
 root.right.left=Tree(60)
 root.right.right=Tree(70)
 
-root.preorder(root)    
+print("\nPreOrder Traversal is\n")
+root.preorder(root)  
+print("\nInOrder Traversal is\n")
+root.inorder(root)
+print("\nPostOrder Traversal is\n")
+root.postorder(root)
+print("\nLevelOrder Traversal is\n")  
 root.levelOrder(root)
