@@ -1,4 +1,5 @@
 #include<iostream>
+#include <cstdlib>
 using namespace std;
 
 class Node{
@@ -80,6 +81,23 @@ class LinkedList{
           }
           cout<<"Element Not Present\n";
       }
+      
+      void deleteFirst(){
+         Node *current=this->head;
+         this->head=current->next;
+
+         free(current);
+      }
+
+      void deleteLast(){
+         Node *current=this->head;
+         while(current->next->next!=NULL){
+             current=current->next;
+         }
+         Node *temp=current->next;
+         current->next=NULL;
+         free(temp);
+      }
 
       void printLL(){
           Node* current=this->head;
@@ -102,5 +120,14 @@ int main(){
     head->AddBeforeANode(20,30);
     head->AddBeforeANode(22,35);
     head->printLL();
+
+    cout<<"\nAfter Deleting from Start\n";
+    head->deleteFirst();
+    head->printLL();
+
+    cout<<"\nAfter Deleting from End\n";
+    head->deleteLast();
+    head->printLL();
+
     return 0;
 }
