@@ -72,6 +72,30 @@ class LinkedList{
         console.log("Element not Found")
     }
 
+    deleteFromStart(){
+        if(this.head==null){
+            console.log("List Is Empty")
+            return
+        }
+
+        this.head=this.head.next
+
+    }
+
+    deleteFromEnd(){
+        if(this.head==null){
+            console.log("List Is Empty")
+            return
+        }
+
+        let current=this.head
+        while(current.next.next!=null){
+            current=current.next
+        }
+
+        current.next=null
+    }
+
     printAll(){
         let current=this.head
         while(current!=null){
@@ -90,4 +114,12 @@ head.addAtEnd(30)
 head.addAfterANode(20,15)
 head.addABeforeANode(25,30)
 
+head.printAll()
+
+console.log("Deletion from Start")
+head.deleteFromStart()
+head.printAll()
+
+console.log("Deletion from End")
+head.deleteFromEnd()
 head.printAll()
