@@ -1,0 +1,1 @@
+GET https://s22hl6eg16.execute-api.ap-south-1.amazonaws.com/default/v2/subscription?product_id=1
