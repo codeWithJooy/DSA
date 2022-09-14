@@ -96,6 +96,21 @@ class LinkedList{
         current.next=null
     }
 
+    reverse(){
+        let next=null
+        let prev=null
+        let current=this.head
+
+        while(current!=null){
+            next=current.next
+            current.next=prev
+            prev=current
+            current=next
+        }
+
+        this.head=prev
+    }
+
     printAll(){
         let current=this.head
         while(current!=null){
@@ -116,10 +131,14 @@ head.addABeforeANode(25,30)
 
 head.printAll()
 
-console.log("Deletion from Start")
-head.deleteFromStart()
-head.printAll()
+// console.log("Deletion from Start")
+// head.deleteFromStart()
+// head.printAll()
 
-console.log("Deletion from End")
-head.deleteFromEnd()
+// console.log("Deletion from End")
+// head.deleteFromEnd()
+// head.printAll()
+
+console.log("After Reversing the List")
+head.reverse()
 head.printAll()

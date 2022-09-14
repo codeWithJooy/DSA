@@ -71,6 +71,18 @@ class DLL{
           free(current);
       }
 
+      void reverse(){
+          Node *current=this->head;
+          Node *temp=NULL;
+          while(current!=NULL){
+              temp=current->next;
+              current->next=current->prev;
+              current->prev=temp;
+              temp=current;
+          }
+          this->head=temp;
+      }
+
       void printAllBack(){
         Node *current=this->head;
         while(current->next!=NULL){
@@ -104,11 +116,12 @@ int main(){
          cout<<"\nPrint From Start to End\n";
          head->printAll();
 
-         head->deleteFront();
+        //  head->deleteFront();
 
-         head->deleteEnd();
-
+        //  head->deleteEnd();
+         head->reverse();
          cout<<"\nPrint From Start to End\n";
+         
          head->printAll(); 
         //  cout<<"\nPrint From End To Start\n"; 
         //  head->printAllBack();

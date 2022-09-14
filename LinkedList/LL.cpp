@@ -98,6 +98,20 @@ class LinkedList{
          current->next=NULL;
          free(temp);
       }
+      
+      void reverse(){
+        Node *next=NULL;
+        Node *prev=NULL;
+        Node *current=this->head;
+
+        while(current!=NULL){
+            next=current->next;
+            current->next=prev;
+            prev=current;
+            current=next;
+        } 
+        this->head=prev; 
+      }
 
       void printLL(){
           Node* current=this->head;
@@ -121,12 +135,16 @@ int main(){
     head->AddBeforeANode(22,35);
     head->printLL();
 
-    cout<<"\nAfter Deleting from Start\n";
-    head->deleteFirst();
-    head->printLL();
+    // cout<<"\nAfter Deleting from Start\n";
+    // head->deleteFirst();
+    // head->printLL();
 
-    cout<<"\nAfter Deleting from End\n";
-    head->deleteLast();
+    // cout<<"\nAfter Deleting from End\n";
+    // head->deleteLast();
+    // head->printLL();
+
+    cout<<"\nAfter Reversing the List\n";
+    head->reverse();
     head->printLL();
 
     return 0;
