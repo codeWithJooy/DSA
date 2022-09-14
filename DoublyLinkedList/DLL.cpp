@@ -1,4 +1,5 @@
 #include<iostream>
+#include <cstdlib>
 using namespace std;
 
 class Node{
@@ -31,6 +32,57 @@ class DLL{
           return;
       }
 
+      void addAtEnd(int data){
+          Node *newNode=new Node(data);
+          if(this->head==NULL){
+              this->head=newNode;
+          }
+          Node *current=this->head;
+          while(current->next!=NULL){
+              current=current->next;
+          }
+          newNode->prev=current;
+          current->next=newNode;
+      }
+      
+      void deleteFront(){
+         if(this->head==NULL){
+             cout<<"No Node to delete\n";
+             return;
+         } 
+         Node *del=this->head;
+         del->next->prev=NULL;
+         this->head=del->next;
+
+         free(del);
+      }
+
+      void deleteEnd(){
+          if(this->head==NULL){
+            cout<<"No Node to delete\n";
+            return;
+          }
+
+          Node *current=this->head;
+          while(current->next!=NULL){
+              current=current->next;
+          }
+          current->prev->next=NULL;
+          free(current);
+      }
+
+      void reverse(){
+          Node *current=this->head;
+          Node *temp=NULL;
+          while(current!=NULL){
+              temp=current->next;
+              current->next=current->prev;
+              current->prev=temp;
+              temp=current;
+          }
+          this->head=temp;
+      }
+
       void printAllBack(){
         Node *current=this->head;
         while(current->next!=NULL){
@@ -55,13 +107,24 @@ class DLL{
 
 int main(){
          DLL *head=new DLL();
+         
          head->addAtFront(2);
          head->addAtFront(5);
          head->addAtFront(10);
+         head->addAtEnd(20);
 
+         cout<<"\nPrint From Start to End\n";
          head->printAll();
 
-         head->printAllBack();
+        //  head->deleteFront();
+
+        //  head->deleteEnd();
+         head->reverse();
+         cout<<"\nPrint From Start to End\n";
+         
+         head->printAll(); 
+        //  cout<<"\nPrint From End To Start\n"; 
+        //  head->printAllBack();
 
          return 0;
          }
